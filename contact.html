@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - SOLUTION SPIRITUELLE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <meta name="description" content="Contactez le Maître Spirituel pour vos questions. WhatsApp: +229 01 62 70 92 46. Consultations disponibles 7j/7.">
+    
+    <!-- Google Translate Widget -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                includedLanguages: 'fr,en,es,it,de,pt',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                multilanguagePage: true
+            }, 'google_translate_element');
+            
+            // Masquer la bannière Google
+            setTimeout(function() {
+                var frame = document.querySelector('.goog-te-banner-frame');
+                if (frame) {
+                    frame.style.display = 'none';
+                }
+                document.body.style.top = '0px';
+            }, 500);
+            
+            // Personnaliser le style du sélecteur
+            setTimeout(function() {
+                var select = document.querySelector('.goog-te-combo');
+                if (select) {
+                    select.style.padding = '8px 15px';
+                    select.style.borderRadius = '20px';
+                    select.style.border = '2px solid #6c5ce7';
+                    select.style.backgroundColor = 'white';
+                    select.style.color = '#333';
+                    select.style.fontWeight = 'bold';
+                    select.style.cursor = 'pointer';
+                    select.style.boxShadow = '0 3px 10px rgba(108, 92, 231, 0.2)';
+                    select.style.fontSize = '14px';
+                }
+            }, 1000);
+        }
+        
+        // Réappliquer les styles après traduction
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.goog-te-combo')) {
+                setTimeout(function() {
+                    var select = document.querySelector('.goog-te-combo');
+                    if (select) {
+                        select.style.padding = '8px 15px';
+                        select.style.borderRadius = '20px';
+                        select.style.border = '2px solid #6c5ce7';
+                        select.style.backgroundColor = 'white';
+                        select.style.color = '#333';
+                        select.style.fontWeight = 'bold';
+                    }
+                }, 300);
+            }
+        });
+    </script>
+    
+    <style>
+        /* Styles pour Google Translate */
+        #google_translate_element {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+        
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+        
+        body {
+            top: 0px !important;
+        }
+        
+        .goog-te-gadget {
+            font-size: 0 !important;
+        }
+        
+        .goog-te-gadget .goog-te-combo {
+            margin: 0 !important;
+            font-size: 14px !important;
+        }
+        
+        .goog-te-menu-frame {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15) !important;
+            border-radius: 10px !important;
+            border: none !important;
+        }
+        
+        /* Adaptation mobile */
+        @media (max-width: 768px) {
+            #google_translate_element {
+                position: relative;
+                top: auto;
+                right: auto;
+                transform: none;
+                margin-left: auto;
+            }
+            
+            .goog-te-combo {
+                padding: 6px 12px !important;
+                font-size: 12px !important;
+            }
+        }
+        
+        /* Cache le sélecteur de langue existant */
+        .language-switcher {
+            display: none !important;
+        }
+        
+        /* Styles pour les messages d'état du formulaire */
+        .status-message {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            display: none;
+        }
+        .status-message.success {
+            display: block;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status-message.error {
+            display: block;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status-message.loading {
+            display: block;
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        .status-message i {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1><i class="fas fa-star-and-crescent"></i> SOLUTION SPIRITUELLE</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="a-propos.html"><i class="fas fa-user"></i> À Propos</a></li>
+                    <li><a href="prendre-rendez-vous.html"><i class="fas fa-calendar-check"></i> Rendez-vous</a></li>
+                    <li><a href="temoignages.html"><i class="fas fa-comments"></i> Témoignages</a></li>
+                    <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+           
+            <!-- Widget Google Translate -->
+            <div id="google_translate_element"></div>
+            
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>Je suis à votre écoute pour répondre à toutes vos questions spirituelles</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <h3><i class="fab fa-whatsapp"></i> WhatsApp Direct</h3>
+                        <p><strong>+229 01 62 70 92 46</strong></p>
+                        <a href="https://wa.me/2290162709246" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp"></i> Envoyer un message WhatsApp
+                        </a>
+                    </div>
+
+                    <div class="info-card">
+                        <h3><i class="fas fa-envelope"></i> Email</h3>
+                        <p><strong>letredivin@gmail.com</strong></p>
+                        <a href="mailto:letredivin@gmail.com" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> Envoyer un email
+                        </a>
+                    </div>
+
+                    <div class="info-card">
+                        <h3><i class="fas fa-clock"></i> Horaires de Consultation</h3>
+                        <div class="hours-list">
+                            <div class="hour-item">
+                                <i class="fas fa-calendar-day"></i>
+                                <div>
+                                    <strong>Lundi - Vendredi :</strong>
+                                    <span>9h - 20h</span>
+                                </div>
+                            </div>
+                            <div class="hour-item">
+                                <i class="fas fa-calendar-day"></i>
+                                <div>
+                                    <strong>Samedi :</strong>
+                                    <span>10h - 18h</span>
+                                </div>
+                            </div>
+                            <div class="hour-item urgent">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <div>
+                                    <strong>Dimanche :</strong>
+                                    <span>Consultation urgente uniquement</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3><i class="fas fa-globe-africa"></i> Consultation Internationale</h3>
+                        <p>Consultations disponibles en :</p>
+                        <div class="languages-list">
+                            <div class="language-item">
+                                <i class="fas fa-language"></i> Français
+                            </div>
+                            <div class="language-item">
+                                <i class="fas fa-language"></i> Anglais
+                            </div>
+                            <div class="language-item">
+                                <i class="fas fa-language"></i> Espagnol
+                            </div>
+                            <div class="language-item">
+                                <i class="fas fa-language"></i> Portugais
+                            </div>
+                        </div>
+                        <p class="timezone-info">
+                            <i class="fas fa-clock"></i> 
+                            <strong>Fuseaux horaires :</strong> Adapté à tous les pays
+                        </p>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <div class="form-header">
+                        <h3>Formulaire de Contact</h3>
+                        <p>Remplissez ce formulaire et je vous répondrai dans les plus brefs délais.</p>
+                    </div>
+
+                    <div class="form-alert">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Important :</strong> Votre message sera traité avec la plus grande confidentialité.
+                            Je m'engage à vous répondre dans les 24 heures.
+                        </div>
+                    </div>
+
+                    <!-- Formulaire corrigé avec l'URL Formspree -->
+                    <form id="contactForm" action="https://formspree.io/f/xnjnvyve" method="POST">
+                        <!-- Champs cachés pour Formspree -->
+                        <input type="hidden" name="_subject" value="Nouveau message depuis SOLUTION SPIRITUELLE">
+                        <input type="hidden" name="_language" value="fr">
+                        <input type="hidden" name="_next" value="https://solutionspirituelle.xo.je/merci.html">
+                        <!-- Optionnel: ajout d'un token anti-spam -->
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <div class="form-group">
+                            <label for="name">Nom complet *</label>
+                            <input type="text" id="name" name="name" class="form-control" required placeholder="Votre nom complet">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Adresse email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="votre@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Numéro de téléphone</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+229 01 23 45 67 89">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="country">Pays</label>
+                            <select id="country" name="country" class="form-control">
+                                <option value="" selected>Sélectionnez votre pays</option>
+                                <option value="BJ">Bénin</option>
+                                <option value="FR">France</option>
+                                <option value="CA">Canada</option>
+                                <option value="BE">Belgique</option>
+                                <option value="CH">Suisse</option>
+                                <option value="SN">Sénégal</option>
+                                <option value="CI">Côte d'Ivoire</option>
+                                <option value="other">Autre pays</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Sujet *</label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="" disabled selected>Sélectionnez un sujet</option>
+                                <option value="consultation">Demande de consultation</option>
+                                <option value="information">Demande d'information</option>
+                                <option value="partnership">Proposition de partenariat</option>
+                                <option value="urgence">Consultation urgente</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" class="form-control" required placeholder="Décrivez votre demande en détail..." rows="6"></textarea>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">
+                                Je souhaite m'inscrire à la newsletter pour recevoir des conseils spirituels et des offres exclusives.
+                            </label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">
+                                J'ai lu et j'accepte la <a href="#" class="privacy-link">politique de confidentialité</a>. *
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary btn-submit">
+                            <i class="fas fa-paper-plane"></i> Envoyer mon message
+                        </button>
+                    </form>
+
+                    <div id="statusMessage" class="status-message"></div>
+                </div>
+            </div>
+
+            <div class="emergency-contact">
+                <div class="emergency-alert">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <h4>Consultation Urgente</h4>
+                        <p>Pour une situation nécessitant une intervention immédiate, contactez-moi directement par WhatsApp.</p>
+                        <a href="https://wa.me/2290162709246" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Urgent: +229 01 62 70 92 46
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> SOLUTION SPIRITUELLE. Tous droits réservés.</p>
+            <p>Consultations spirituelles professionnelles - Respect et confidentialité garantis</p>
+            <p>Email : <a href="mailto:letredivin@gmail.com">letredivin@gmail.com</a> | WhatsApp : +229 01 62 70 92 46</p>
+        </div>
+    </footer>
+
+    <!-- Script pour la gestion du formulaire -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const statusMessage = document.getElementById('statusMessage');
+            const submitButton = form.querySelector('.btn-submit');
+
+            if (form) {
+                form.addEventListener('submit', async function(event) {
+                    event.preventDefault(); // Empêche l'envoi traditionnel
+
+                    // 1. VALIDATION VISUELLE
+                    const requiredFields = form.querySelectorAll('[required]');
+                    let isValid = true;
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            isValid = false;
+                            field.style.borderColor = '#e74c3c'; // Bordure rouge
+                        } else {
+                            field.style.borderColor = ''; // Réinitialise
+                        }
+                    });
+                    if (!isValid) {
+                        showStatus('Veuillez remplir tous les champs obligatoires (*).', 'error');
+                        return; // Arrête si invalide
+                    }
+
+                    // 2. Désactiver le bouton pour éviter les doubles clics
+                    if (submitButton) {
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                    }
+
+                    try {
+                        // 3. Créer un FormData pour l'envoi
+                        const formData = new FormData(form);
+                        
+                        // 4. ENVOI VERS FORMSPREE
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        // 5. RÉPONSE DE FORMSPREE
+                        if (response.ok) {
+                            // SUCCÈS - Redirection immédiate
+                            window.location.href = 'https://solutionspirituelle.xo.je/merci.html';
+                        } else {
+                            // ERREUR DE FORMSPREE
+                            const result = await response.json();
+                            let errorMsg = 'Une erreur est survenue lors de l\'envoi.';
+                            
+                            if (result.error) {
+                                errorMsg = result.error;
+                            } else if (result.errors) {
+                                errorMsg = result.errors.map(err => err.message).join(', ');
+                            }
+                            throw new Error(errorMsg);
+                        }
+                    } catch (error) {
+                        // ERREUR RÉSEAU OU AUTRE
+                        console.error('Erreur d\'envoi:', error);
+                        showStatus('<i class="fas fa-exclamation-circle"></i> ' + 
+                                  (error.message || 'Problème de connexion. Réessayez ou contactez-moi par WhatsApp.'), 'error');
+                    } finally {
+                        // Réactiver le bouton en cas d'erreur
+                        if (submitButton) {
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer mon message';
+                        }
+                    }
+                });
+            }
+
+            // Fonction pour afficher les messages d'état
+            function showStatus(messageHtml, type) {
+                if (statusMessage) {
+                    statusMessage.innerHTML = messageHtml;
+                    statusMessage.className = 'status-message ' + type;
+                    statusMessage.style.display = 'block';
+                    
+                    // Masquer le message après 5 secondes
+                    setTimeout(() => {
+                        statusMessage.style.display = 'none';
+                    }, 5000);
+                }
+            }
+        });
+    </script>
+
+    <!-- Scripts externes existants -->
+    <script src="js/script.js"></script>
+    
+    <!-- Chargement de Google Translate -->
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

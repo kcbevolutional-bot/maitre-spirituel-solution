@@ -1,0 +1,314 @@
+# Activation du moteur de réécriture
+RewriteEngine On
+
+# Définir le répertoire de base (si le site est dans un sous-dossier)
+# RewriteBase /
+
+# ------------------------------------------------------------------
+# REDIRECTIONS ET GESTION DES URLS
+# ------------------------------------------------------------------
+
+# Redirection vers HTTPS (si disponible)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Redirection vers www (optionnel - décommentez si nécessaire)
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+# Redirection du domaine sans www vers avec www (ou inversement)
+# Choisissez une seule des deux options ci-dessous :
+
+# Option 1 : Forcer www
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+# Option 2 : Supprimer www
+# RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+# RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# ------------------------------------------------------------------
+# RÉÉCRITURE D'URLS (URLS SANS EXTENSION .HTML)
+# ------------------------------------------------------------------
+
+# Supprimer l'extension .html des URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
+
+# Rediriger les URLs avec .html vers sans .html (pour la propreté)
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1 [NC,L,R=301]
+
+# Empêcher l'accès direct aux fichiers .html
+RewriteCond %{THE_REQUEST} \.html[\s?] [NC]
+RewriteRule ^ - [R=404]
+
+# ------------------------------------------------------------------
+# PROTECTION ET SÉCURITÉ
+# ------------------------------------------------------------------
+
+# Protection contre les accès directs aux fichiers .htaccess
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Protection des fichiers sensibles
+<FilesMatch "^(wp-config\.php|config\.inc\.php|php\.ini|\.env|\.gitignore|\.gitattributes|composer\.json|composer\.lock|package\.json|yarn\.lock|\.editorconfig|\.eslintrc|\.prettierrc|\.htpasswd|\.htaccess|\.ftpquota)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Protection des répertoires sensibles
+Options -Indexes
+
+# Empêcher le hotlinking (vol d'images)
+# RewriteCond %{HTTP_REFERER} !^$
+# RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?votre-domaine\.com [NC]
+# RewriteRule \.(jpg|jpeg|png|gif|svg|ico|css|js)$ - [NC,F,L]
+
+# Protection contre les injections de base
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ index.php [F,L]
+
+# Bloquer certains user agents malveillants
+RewriteCond %{HTTP_USER_AGENT} ^.*(AhrefsBot|MJ12bot|SemrushBot|dotbot|BLEXBot|rogerbot|spbot).*$ [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# ------------------------------------------------------------------
+# EN-TÊTES DE SÉCURITÉ
+# ------------------------------------------------------------------
+
+# Protection contre le clickjacking
+Header always append X-Frame-Options SAMEORIGIN
+
+# Protection contre le sniffing de type MIME
+Header set X-Content-Type-Options nosniff
+
+# Protection XSS
+Header set X-XSS-Protection "1; mode=block"
+
+# Politique de sécurité du contenu (CSP)
+# Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:"
+
+# Référent (Referrer-Policy)
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Permissions (Feature-Policy)
+Header set Feature-Policy "camera 'none'; microphone 'none'; geolocation 'none'"
+
+# ------------------------------------------------------------------
+# OPTIMISATION ET PERFORMANCE
+# ------------------------------------------------------------------
+
+# Compression GZIP pour améliorer les performances
+<IfModule mod_deflate.c>
+    # Compresser le contenu HTML, CSS, JavaScript, XML, JSON et les polices
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE font/otf
+    AddOutputFilterByType DEFLATE font/woff
+    AddOutputFilterByType DEFLATE font/woff2
+    AddOutputFilterByType DEFLATE image/svg+xml
+    
+    # Supprimer les bogues pour les navigateurs anciens
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+    Header append Vary User-Agent
+</IfModule>
+
+# Mise en cache pour améliorer les performances
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # CSS et JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType application/x-javascript "access plus 1 month"
+    
+    # Polices
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+    
+    # Autres
+    ExpiresByType text/html "access plus 1 day"
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType application/x-shockwave-flash "access plus 1 month"
+</IfModule>
+
+# Forcer la mise en cache des fichiers statiques
+<FilesMatch "\.(jpg|jpeg|png|gif|ico|svg|css|js|woff|woff2|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+
+# ------------------------------------------------------------------
+# GESTION DES ERREURS
+# ------------------------------------------------------------------
+
+# Pages d'erreur personnalisées
+ErrorDocument 400 /erreurs/400.html
+ErrorDocument 401 /erreurs/401.html
+ErrorDocument 403 /erreurs/403.html
+ErrorDocument 404 /erreurs/404.html
+ErrorDocument 500 /erreurs/500.html
+ErrorDocument 502 /erreurs/502.html
+ErrorDocument 503 /erreurs/503.html
+ErrorDocument 504 /erreurs/504.html
+
+# Redirection des erreurs 404 vers une page personnalisée
+ErrorDocument 404 /404.html
+
+# ------------------------------------------------------------------
+# PARAMÈTRES DIVERS
+# ------------------------------------------------------------------
+
+# Limiter la taille des fichiers uploadés (si applicable)
+# LimitRequestBody 10485760
+
+# Désactiver la signature du serveur
+ServerSignature Off
+
+# Empêcher l'affichage du listing des répertoires
+Options -Indexes
+
+# ------------------------------------------------------------------
+# ENCODAGE DES CARACTÈRES
+# ------------------------------------------------------------------
+
+# Définir l'encodage par défaut
+AddDefaultCharset UTF-8
+
+# ------------------------------------------------------------------
+# PROTECTION CONTRE LES DOS/DDOS
+# ------------------------------------------------------------------
+
+# Limiter le nombre de requêtes par IP
+# <IfModule mod_evasive20.c>
+#     DOSHashTableSize 3097
+#     DOSPageCount 5
+#     DOSSiteCount 50
+#     DOSPageInterval 2
+#     DOSSiteInterval 2
+#     DOSBlockingPeriod 10
+# </IfModule>
+
+# Limiter la taille du corps de la requête
+# LimitRequestBody 10240000
+
+# ------------------------------------------------------------------
+# RÈGLES SPÉCIFIQUES AU SITE
+# ------------------------------------------------------------------
+
+# Protection contre les robots indésirables
+RewriteCond %{HTTP_USER_AGENT} ^BlackWidow [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Bot\ mailto:craftbot@yahoo.com [OR]
+RewriteCond %{HTTP_USER_AGENT} ^ChinaClaw [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Custo [OR]
+RewriteCond %{HTTP_USER_AGENT} ^DISCo [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Download\ Demon [OR]
+RewriteCond %{HTTP_USER_AGENT} ^eCatch [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EirGrabber [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EmailSiphon [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EmailWolf [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Express\ WebPictures [OR]
+RewriteCond %{HTTP_USER_AGENT} ^ExtractorPro [OR]
+RewriteCond %{HTTP_USER_AGENT} ^EyeNetIE [OR]
+RewriteCond %{HTTP_USER_AGENT} ^FlashGet [OR]
+RewriteCond %{HTTP_USER_AGENT} ^GetRight [OR]
+RewriteCond %{HTTP_USER_AGENT} ^GetWeb! [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Go!Zilla [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Go-Ahead-Got-It [OR]
+RewriteCond %{HTTP_USER_AGENT} ^GrabNet [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Grafula [OR]
+RewriteCond %{HTTP_USER_AGENT} ^HMView [OR]
+RewriteCond %{HTTP_USER_AGENT} ^HTTrack [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Image\ Stripper [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Image\ Sucker [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Indy\ Library [OR]
+RewriteCond %{HTTP_USER_AGENT} ^InterGET [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Internet\ Ninja [OR]
+RewriteCond %{HTTP_USER_AGENT} ^JetCar [OR]
+RewriteCond %{HTTP_USER_AGENT} ^JOC\ Web\ Spider [OR]
+RewriteCond %{HTTP_USER_AGENT} ^larbin [OR]
+RewriteCond %{HTTP_USER_AGENT} ^LeechFTP [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Mass\ Downloader [OR]
+RewriteCond %{HTTP_USER_AGENT} ^MIDown\ tool [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Mister\ PiX [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Navroad [OR]
+RewriteCond %{HTTP_USER_AGENT} ^NearSite [OR]
+RewriteCond %{HTTP_USER_AGENT} ^NetAnts [OR]
+RewriteCond %{HTTP_USER_AGENT} ^NetSpider [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Net\ Vampire [OR]
+RewriteCond %{HTTP_USER_AGENT} ^NetZIP [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Octopus [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Offline\ Explorer [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Offline\ Navigator [OR]
+RewriteCond %{HTTP_USER_AGENT} ^PageGrabber [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Papa\ Foto [OR]
+RewriteCond %{HTTP_USER_AGENT} ^pavuk [OR]
+RewriteCond %{HTTP_USER_AGENT} ^pcBrowser [OR]
+RewriteCond %{HTTP_USER_AGENT} ^RealDownload [OR]
+RewriteCond %{HTTP_USER_AGENT} ^ReGet [OR]
+RewriteCond %{HTTP_USER_AGENT} ^SiteSnagger [OR]
+RewriteCond %{HTTP_USER_AGENT} ^SmartDownload [OR]
+RewriteCond %{HTTP_USER_AGENT} ^SuperBot [OR]
+RewriteCond %{HTTP_USER_AGENT} ^SuperHTTP [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Surfbot [OR]
+RewriteCond %{HTTP_USER_AGENT} ^tAkeOut [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Teleport\ Pro [OR]
+RewriteCond %{HTTP_USER_AGENT} ^VoidEYE [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Web\ Image\ Collector [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Web\ Sucker [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebAuto [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebCopier [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebFetch [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebGo\ IS [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebLeacher [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebReaper [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebSauger [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Website\ eXtractor [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Website\ Quester [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebStripper [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebWhacker [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WebZIP [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Wget [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Widow [OR]
+RewriteCond %{HTTP_USER_AGENT} ^WWWOFFLE [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Xaldon\ WebSpider [OR]
+RewriteCond %{HTTP_USER_AGENT} ^Zeus
+RewriteRule ^.* - [F,L]
+
+# ------------------------------------------------------------------
+# INFORMATIONS DE DÉBOGAGE
+# ------------------------------------------------------------------
+
+# Pour activer/désactiver le mode maintenance
+# RewriteCond %{REMOTE_ADDR} !^123\.456\.789\.000
+# RewriteCond %{REQUEST_URI} !^/maintenance\.html$
+# RewriteRule ^(.*)$ /maintenance.html [R=302,L]

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prendre Rendez-vous - Consultation Spirituelle | SOLUTION SPIRITUELLE</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Réservez votre consultation spirituelle personnalisée : visio-consultation, téléphone ou messagerie. Consultations internationales disponibles.">
+    
+    <!-- Google Translate Widget -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                includedLanguages: 'fr,en,es,it,de,pt',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                multilanguagePage: true
+            }, 'google_translate_element');
+            
+            // Masquer la bannière Google
+            setTimeout(function() {
+                var frame = document.querySelector('.goog-te-banner-frame');
+                if (frame) {
+                    frame.style.display = 'none';
+                }
+                document.body.style.top = '0px';
+            }, 500);
+            
+            // Personnaliser le style du sélecteur
+            setTimeout(function() {
+                var select = document.querySelector('.goog-te-combo');
+                if (select) {
+                    select.style.padding = '8px 15px';
+                    select.style.borderRadius = '20px';
+                    select.style.border = '2px solid #6c5ce7';
+                    select.style.backgroundColor = 'white';
+                    select.style.color = '#333';
+                    select.style.fontWeight = 'bold';
+                    select.style.cursor = 'pointer';
+                    select.style.boxShadow = '0 3px 10px rgba(108, 92, 231, 0.2)';
+                    select.style.fontSize = '14px';
+                }
+            }, 1000);
+        }
+        
+        // Réappliquer les styles après traduction
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.goog-te-combo')) {
+                setTimeout(function() {
+                    var select = document.querySelector('.goog-te-combo');
+                    if (select) {
+                        select.style.padding = '8px 15px';
+                        select.style.borderRadius = '20px';
+                        select.style.border = '2px solid #6c5ce7';
+                        select.style.backgroundColor = 'white';
+                        select.style.color = '#333';
+                        select.style.fontWeight = 'bold';
+                    }
+                }, 300);
+            }
+        });
+    </script>
+    
+    <style>
+        /* Styles pour Google Translate */
+        #google_translate_element {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+        
+        .goog-te-banner-frame.skiptranslate {
+            display: none !important;
+        }
+        
+        body {
+            top: 0px !important;
+        }
+        
+        .goog-te-gadget {
+            font-size: 0 !important;
+        }
+        
+        .goog-te-gadget .goog-te-combo {
+            margin: 0 !important;
+            font-size: 14px !important;
+        }
+        
+        .goog-te-menu-frame {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15) !important;
+            border-radius: 10px !important;
+            border: none !important;
+        }
+        
+        /* Adaptation mobile */
+        @media (max-width: 768px) {
+            #google_translate_element {
+                position: relative;
+                top: auto;
+                right: auto;
+                transform: none;
+                margin-left: auto;
+            }
+            
+            .goog-te-combo {
+                padding: 6px 12px !important;
+                font-size: 12px !important;
+            }
+        }
+        
+        /* Cache l'ancien sélecteur de langue */
+        .language-switcher {
+            display: none !important;
+        }
+        
+        /* Styles pour la musique */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1><i class="fas fa-star-and-crescent"></i> SOLUTION SPIRITUELLE</h1>
+                <p class="logo-subtitle">Maître Spirituel Praticien</p>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="a-propos.html"><i class="fas fa-user"></i> À Propos</a></li>
+                    <li><a href="prendre-rendez-vous.html" class="active"><i class="fas fa-calendar-check"></i> Rendez-vous</a></li>
+                    <li><a href="temoignages.html"><i class="fas fa-comments"></i> Témoignages</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+           
+            <!-- Widget Google Translate -->
+            <div id="google_translate_element"></div>
+            
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>Prendre Rendez-vous</h2>
+            <p>Réservez votre consultation spirituelle personnalisée avec un Maître Praticien expérimenté</p>
+        </div>
+    </section>
+
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-container">
+                <div class="booking-info">
+                    <h3>Modalités de Consultation Professionnelle</h3>
+                    <div class="consultation-types">
+                        <div class="consultation-card">
+                            <i class="fas fa-video"></i>
+                            <h4>Visio-consultation</h4>
+                            <p>Consultation à distance via Zoom, WhatsApp . Échange en direct avec partage d'écran si nécessaire.</p>
+                            <span class="price">120€-240€ / 1h</span>
+                            <div class="feature-list">
+                                <span><i class="fas fa-check"></i> Interaction en temps réel</span>
+                                <span><i class="fas fa-check"></i> Support visuel</span>
+                                <span><i class="fas fa-check"></i> Enregistrement optionnel</span>
+                            </div>
+                        </div>
+                        <div class="consultation-card">
+                            <i class="fas fa-phone-alt"></i>
+                            <h4>Consultation téléphonique</h4>
+                            <p>Échange privé par téléphone, idéal pour une intimité totale et une concentration optimale.</p>
+                            <span class="price">60€ / 45min</span>
+                            <div class="feature-list">
+                                <span><i class="fas fa-check"></i> Discrétion absolue</span>
+                                <span><i class="fas fa-check"></i> Qualité audio optimale</span>
+                                <span><i class="fas fa-check"></i> Flexibilité horaire</span>
+                            </div>
+                        </div>
+                        <div class="consultation-card">
+                            <i class="fas fa-comments"></i>
+                            <h4>Messagerie spirituelle</h4>
+                            <p>Échanges écrits approfondis par WhatsApp ou email, avec analyses détaillées et réponses personnalisées.</p>
+                            <span class="price">70€ / séance</span>
+                            <div class="feature-list">
+                                <span><i class="fas fa-check"></i> Réflexion approfondie</span>
+                                <span><i class="fas fa-check"></i> Documentation écrite</span>
+                                <span><i class="fas fa-check"></i> Consultation asynchrone</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="whatsapp-direct">
+                        <h4><i class="fab fa-whatsapp"></i> Réservation Directe & Urgente</h4>
+                        <p>Pour une prise de rendez-vous immédiate ou une consultation urgente, contactez-moi directement sur WhatsApp :</p>
+                        <a href="https://wa.me/2290162709246" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp"></i> WhatsApp Direct: +229 01 62 70 92 46
+                        </a>
+                        <p class="response-time"><i class="fas fa-bolt"></i> Réponse garantie sous 1 heure pendant les horaires d'ouverture</p>
+                    </div>
+                    
+                    <div class="booking-instructions">
+                        <h4><i class="fas fa-info-circle"></i> Informations Importantes pour Votre Consultation</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Veuillez remplir tous les champs obligatoires (*) avec précision</li>
+                            <li><i class="fas fa-check-circle"></i> Confirmation du rendez-vous par email ou WhatsApp sous 24h</li>
+                            <li><i class="fas fa-check-circle"></i> Préparez vos questions et intentions avant la consultation</li>
+                            <li><i class="fas fa-check-circle"></i> Paiement sécurisé disponible (PayPal, virement, mobile money)</li>
+                            <li><i class="fas fa-check-circle"></i> Politique d'annulation flexible : jusqu'à 24h avant sans frais</li>
+                            <li><i class="fas fa-check-circle"></i> Consultations disponibles en français, anglais, allemand  espagnol et portugais</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="booking-form">
+                    <div class="form-header">
+                        <h3>Formulaire de Réservation</h3>
+                        <p>Remplissez ce formulaire et je vous contacterai pour finaliser votre rendez-vous</p>
+                    </div>
+                    
+                    <form id="bookingForm" action="https://formsubmit.co/letredivin@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - SOLUTION SPIRITUELLE">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://solutionspirituelle.xo.je/merci.html">
+                        
+                        <div class="form-group">
+                            <label for="bookingName">Nom complet *</label>
+                            <input type="text" id="bookingName" name="name" required class="form-control" placeholder="Votre nom et prénom complets">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bookingEmail">Adresse email *</label>
+                            <input type="email" id="bookingEmail" name="email" required class="form-control" placeholder="exemple@email.com">
+                            <small>Nous vous enverrons la confirmation à cette adresse</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bookingPhone">Téléphone/WhatsApp *</label>
+                            <input type="tel" id="bookingPhone" name="phone" required class="form-control" placeholder="+indicatif numéro (ex: +229 01 23 45 67 89)">
+                            <small>Inclure l'indicatif de votre pays</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bookingDate">Date souhaitée *</label>
+                            <input type="date" id="bookingDate" name="date" required class="form-control" min="2024-01-01">
+                            <small>Consultations du lundi au samedi, 9h-20h</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bookingTime">Créneau horaire préféré *</label>
+                            <select id="bookingTime" name="time" required class="form-control">
+                                <option value="">Sélectionnez un créneau horaire</option>
+                                <option value="09:00">09:00 - 10:00 (matin)</option>
+                                <option value="11:00">11:00 - 12:00 (matin)</option>
+                                <option value="14:00">14:00 - 15:00 (après-midi)</option>
+                                <option value="16:00">16:00 - 17:00 (après-midi)</option>
+                                <option value="18:00">18:00 - 19:00 (soir)</option>
+                                <option value="19:30">19:30 - 20:30 (soir)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="consultationType">Type de consultation *</label>
+                            <select id="consultationType" name="consultation_type" required class="form-control">
+                                <option value="">Sélectionnez le type de consultation</option>
+                                <option value="voyance">Voyance et guidance de vie</option>
+                                <option value="medium">Communication médiumnique</option>
+                                <option value="energie">Soins énergétiques et purification</option>
+                                <option value="rituel">Rituel personnalisé du bien</option>
+                                <option value="urgence">Consultation urgente</option>
+                                <option value="autre">Autre demande spécifique</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="consultationMode">Mode de consultation *</label>
+                            <select id="consultationMode" name="consultation_mode" required class="form-control">
+                                <option value="">Sélectionnez le mode</option>
+                                <option value="visio">Visioconférence (Zoom/WhatsApp/Skype)</option>
+                                <option value="telephone">Téléphone</option>
+                                <option value="messagerie">Messagerie (WhatsApp/Email)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bookingMessage">Votre demande (optionnel mais recommandé)</label>
+                            <textarea id="bookingMessage" name="message" class="form-control" rows="4" placeholder="Décrivez brièvement la raison de votre consultation, vos attentes, ou toute information pertinente pour mieux vous accompagner..."></textarea>
+                            <small>Ces informations restent strictement confidentielles</small>
+                        </div>
+                        
+                        <div class="form-group terms-group">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms">J'accepte les <a href="#" style="color: #6c5ce7;">conditions générales</a> et la <a href="#" style="color: #6c5ce7;">politique de confidentialité</a> *</label>
+                        </div>
+                        
+                        <div class="form-group newsletter-group">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Je souhaite recevoir des conseils spirituels et des offres exclusives par email</label>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary btn-submit">
+                            <i class="fas fa-paper-plane"></i> Envoyer ma demande de rendez-vous
+                        </button>
+                        
+                        <p class="form-footer">Vous recevrez une confirmation sous 24 heures maximum</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>SOLUTION SPIRITUELLE</h4>
+                    <p>Guidance spirituelle professionnelle depuis 17 ans</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Rapide</h4>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: +229 01 62 70 92 46</p>
+                    <p><i class="fas fa-envelope"></i> Email: letredivin@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Horaires</h4>
+                    <p>Lun-Ven: 9h-20h</p>
+                    <p>Sam: 10h-18h</p>
+                    <p>Dim: Urgences uniquement</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> SOLUTION SPIRITUELLE. Tous droits réservés.</p>
+                <p>Consultations spirituelles professionnelles - Éthique et confidentialité garanties</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts externes -->
+    <script src="js/script.js"></script>
+    <script src="js/booking.js"></script>
+    
+    <!-- Script pour l'année dynamique -->
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+    
+    <!-- Chargement de Google Translate -->
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Music Player -->
+    <div class="music-player">
+        <div class="music-track-info" id="trackInfo">
+            <div class="track-name">Musique de relaxation spirituelle</div>
+            <div class="track-time"><span id="currentTime">0:00</span> / <span id="totalTime">0:00</span></div>
+        </div>
+        
+        <div class="music-volume-control" id="volumeControl">
+            <i class="fas fa-volume-down volume-icon"></i>
+            <input type="range" min="0" max="100" value="50" class="volume-slider" id="volumeSlider">
+            <i class="fas fa-volume-up volume-icon"></i>
+        </div>
+        
+        <button class="music-toggle" id="musicToggle" aria-label="Contrôle de la musique">
+            <i class="fas fa-play" id="playIcon"></i>
+        </button>
+    </div>
+
+    <!-- Audio Element (caché) -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="audio/background-music.mp3" type="audio/mpeg">
+        <source src="audio/background-music.ogg" type="audio/ogg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+    
+    <!-- Script pour la musique -->
+    <script src="js/music.js"></script>
+    
+    <!-- Meta pour compatibilité -->
+    <meta name="theme-color" content="#6c5ce7">
+</body>
+</html>
